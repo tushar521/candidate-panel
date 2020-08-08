@@ -1,0 +1,533 @@
+<div class="card custom-css">
+  <form>
+
+    <!-- div1 -->
+    <div *ngIf="showDiv1">
+
+      <div>
+        <div class="header-section">User name & Password</div>
+        <br>
+
+        <!-- username -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label><span class="compulsory-sign">*</span>Username</label>
+              </td>
+              <td style="width: 60%;">
+                <input type="text" class="form-control" aria-describedby="name" name="Name" [(ngModel)]="username">
+                <span *ngIf="usernameRequired" style="color: tomato; font-size: 12px;">{{ usernameRequired }}</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- email -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label><span class="compulsory-sign">*</span>Email</label>
+              </td>
+              <td style="width: 60%;">
+                <input type="email" class="form-control" id="emailId" aria-describedby="name" name="emailId"
+                  [(ngModel)]="emailId">
+                <span *ngIf="invalidEmail" style="color: tomato; font-size: 12px;">{{ invalidEmail }}</span>
+                <span *ngIf="emailRequired" style="color: tomato; font-size: 12px;">{{ emailRequired }}</span>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+
+        <!-- passoword -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label><span class="compulsory-sign">*</span>Password</label>
+              </td>
+              <td style="width: 60%;">
+                <input type="password" class="form-control" id="password" aria-describedby="name" name="password"
+                  [(ngModel)]="password">
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- confirm password -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label><span class="compulsory-sign">*</span>Confirm Password</label>
+              </td>
+              <td style="width: 60%;">
+                <input type="password" class="form-control" id="cpassword" aria-describedby="name" name="cpassword"
+                  [(ngModel)]="cpassword">
+                <span *ngIf="passwordNotMatch" style="color: tomato; font-size: 12px;">{{ passwordNotMatch }}</span>
+                <span *ngIf="passwordRequired" style="color: tomato; font-size: 12px;">{{ passwordRequired }}</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+
+      <div>
+        <div class="header-section">Contact Information</div>
+        <br>
+
+        <!-- title -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label><span class="compulsory-sign">*</span>Title</label>
+              </td>
+              <td style="width: 60%;">
+                <select [(ngModel)]="titleValue" name="titleValue" (change)="onTitleChange($event.target.value)"
+                  class="form-control">
+                  <option value="default" selected hidden>Select Value</option>
+                  <option value="Mr.">Mr.</option>
+                  <option value="Miss.">Miss.</option>
+                  <option value="Mrs.">Mrs.</option>
+                </select>
+                <span *ngIf="titleRequired" style="color: tomato; font-size: 12px;">{{ titleRequired }}</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- fullname -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label><span class="compulsory-sign">*</span>Fullname</label>
+              </td>
+              <td style="width: 60%;">
+                <input type="text" class="form-control" id="fullName" aria-describedby="fullName" name="fullName"
+                  [(ngModel)]="fullName">
+                <span *ngIf="fullnameRequired" style="color: tomato; font-size: 12px;">{{ fullnameRequired }}</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- date of birth -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label><span class="compulsory-sign">*</span>Title</label>
+              </td>
+              <td style="width: 20%;">
+                <select [(ngModel)]="dobDay" name="dobDay" (change)="onDOBDayChange($event.target.value)"
+                  class="form-control">
+                  <option value="default" selected hidden>Day</option>
+                  <option *ngFor="let singleDay of days" value="{{singleDay}}">{{singleDay}}</option>
+                </select>
+                <span *ngIf="dayRequired" style="color: tomato; font-size: 12px;">{{ dayRequired }}</span>
+              </td>
+              <td style="width: 20%;">
+                <select [(ngModel)]="dobMonth" name="dobMonth" (change)="onDOBDayMonth($event.target.value)"
+                  class="form-control">
+                  <option value="default" selected hidden>Month</option>
+                  <option *ngFor="let singleMonth of months" value="{{singleMonth}}">{{singleMonth}}</option>
+                </select>
+                <span *ngIf="monthRequired" style="color: tomato; font-size: 12px;">{{ monthRequired }}</span>
+              </td>
+              <td style="width: 20%;">
+                <select [(ngModel)]="dobYear" name="dobYear" (change)="onDOBDayYear($event.target.value)"
+                  class="form-control">
+                  <option value="default" selected hidden>Year</option>
+                  <option *ngFor="let singleYear of years" value="{{singleYear}}">{{singleYear}}</option>
+                </select>
+                <span *ngIf="yearRequired" style="color: tomato; font-size: 12px;">{{ yearRequired }}</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- country -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label><span class="compulsory-sign">*</span>country</label>
+              </td>
+              <td style="width: 60%;">
+                <select [(ngModel)]="selectedCountry" name="selectedCountry" (change)="($event.target.value)"
+                  class="form-control">
+                  <option value="default" selected hidden>Select Value</option>
+                  <option *ngFor="let country of countries" value="{{country.name}}">{{country.name}}</option>
+                </select>
+                <span *ngIf="countryRequired" style="color: tomato; font-size: 12px;">{{ countryRequired }}</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+
+        <!-- state -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label><span class="compulsory-sign">*</span>State</label>
+              </td>
+              <td style="width: 60%;">
+                <input type="text" class="form-control" id="state" aria-describedby="state" name="state"
+                  [(ngModel)]="state">
+                <span *ngIf="stateRequired" style="color: tomato; font-size: 12px;">{{ stateRequired }}</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- city/town -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label>Town/City</label>
+              </td>
+              <td style="width: 60%;">
+                <input type="text" class="form-control" id="town" aria-describedby="town" name="state"
+                  [(ngModel)]="town">
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- phoneNumber -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label>Phone Number</label>
+              </td>
+              <td style="width: 60%;">
+                <input type="text" class="form-control" id="phoneNumber" aria-describedby="phoneNumber"
+                  name="phoneNumber" [(ngModel)]="phoneNumber">
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- mobileNumber -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label><span class="compulsory-sign">*</span>Mobile Number</label>
+              </td>
+              <td style="width: 60%;">
+                <input type="text" class="form-control" id="mobileNumber" aria-describedby="mobileNumber"
+                  name="mobileNumber" [(ngModel)]="mobileNumber">
+                <span *ngIf="mobileNumberRequired"
+                  style="color: tomato; font-size: 12px;">{{ mobileNumberRequired }}</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+
+      <div>
+        <div class="header-section">Bried Synopsis of Your Resume</div>
+        <br>
+
+        <!-- total experiece -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 50%; float: right; text-align: end; padding-right: 10px;">
+                <label><span class="compulsory-sign">*</span>Total Experience(Years)</label>
+              </td>
+              <td style="width: 60%;">
+                <select [(ngModel)]="totalExp" name="totalExp" (change)="onTotalExpChange($event.target.value)"
+                  class="form-control">
+                  <option value="default" selected hidden>Your Exp.</option>
+                  <option *ngFor="let exp of experiece" value="{{exp}}">{{exp}}</option>
+                </select>
+                <span *ngIf="totalExpRequired" style="color: tomato; font-size: 12px;">{{ totalExpRequired }}</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- skills -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label><span class="compulsory-sign">*</span>Key Skills</label>
+              </td>
+              <td style="width: 60%;">
+                <textarea class="form-control" id="keySkills" aria-describedby="keySkills" name="keySkills"
+                  [(ngModel)]="keySkills"></textarea>
+                <span *ngIf="keySkillsRequired" style="color: tomato; font-size: 12px;">{{ keySkillsRequired }}</span>
+              </td>
+            </tr>
+          </table>
+          <div style="text-align: center;padding-top: 15px; padding-bottom: 10px;font-size: 12px;">Do not enter soft
+            skills like loyal or hard worker or perfection. <br>
+            Please mention skills such as:<br>
+            Eg: Institutional Sales, Direct Marketing etc.</div>
+        </div>
+
+
+        <!-- functional area -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label><span class="compulsory-sign">*</span>Functioal Area</label>
+              </td>
+              <td style="width: 60%;">
+                <select [(ngModel)]="fnArea" name="fnArea" (change)="onSelectFnArea($event.target.value)"
+                  class="form-control">
+                  <option value="default" selected hidden>Select Functional Area</option>
+                  <option *ngFor="let exp of functionalArea" value="{{exp}}">{{exp}}</option>
+                </select>
+                <span *ngIf="fnAreaRequired" style="color: tomato; font-size: 12px;">{{ fnAreaRequired }}</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+
+      <div style="text-align: center;">
+        <button type="submit" class="btn btn-primary" (click)="nextClick()">Next</button>
+      </div>
+
+    </div>
+
+    <div *ngIf="showDiv2" style="text-align: center;">
+
+
+      <div>
+        <div class="header-section">Education Qualification</div>
+
+        <!-- qualification -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label><span class="compulsory-sign">*</span>Qualification</label>
+              </td>
+              <td style="width: 60%;">
+                <select [(ngModel)]="qualification" name="qualification"
+                  (change)="onQualificationChange($event.target.value)" class="form-control">
+                  <option value="default" selected hidden>Select Value</option>
+                  <option *ngFor="let qualification of qualifications" value="{{qualification}}">{{qualification}}
+                  </option>
+                </select>
+                <span *ngIf="qualificationReq" style="color: tomato; font-size: 12px;">{{ qualificationReq }}</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- specialization -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label>Specialization</label>
+              </td>
+              <td style="width: 60%;">
+                <input type="text" class="form-control" id="specialization" aria-describedby="specialization"
+                  name="specialization" [(ngModel)]="specialization">
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <div class="header-section">Brief Work Experience (Current)</div>
+
+        <!-- current Org -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label>Current Organization</label>
+              </td>
+              <td style="width: 60%;">
+                <input type="text" class="form-control" id="currentOrg" aria-describedby="currentOrg"
+                  name="currentOrg" [(ngModel)]="currentOrg">
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- current designation -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label>Current Designation</label>
+              </td>
+              <td style="width: 60%;">
+                <select [(ngModel)]="selectedDesignation" name="selectedDesignation" (change)="onCurrentDesigationChange($event.target.value)" class="form-control">
+                  <option value="default" selected hidden>Select</option>
+                  <option *ngFor="let designation of designations" value="{{designation}}">{{designation}}</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- exp from year -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label>From year to year</label>
+              </td>
+              <td style="width: 30%;">
+                <select [(ngModel)]="currentExpFromYear" name="currentExpFromYear" (change)="onCurrentExpFromYearChange($event.target.value)" class="form-control">
+                  <option value="default" selected hidden>Select</option>
+                  <option *ngFor="let year of fromCurrentYears" value="{{year}}">{{year}}</option>
+                </select>
+              </td>
+              <td style="width: 30%;">
+                <select [(ngModel)]="currentExpToYear" name="currentExpToYear" (change)="onCurrentExpToYearChange($event.target.value)" class="form-control">
+                  <option value="default" selected hidden>Select</option>
+                  <option *ngFor="let year of toCurrentYears" value="{{year}}">{{year}}</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- currentJobProfile -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label>Job Profile</label>
+              </td>
+              <td style="width: 60%;">
+                <textarea class="form-control" id="currentJobProfile" aria-describedby="currentJobProfile"
+                  name="currentJobProfile" [(ngModel)]="currentJobProfile"></textarea>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+
+      </div>
+
+      <div>
+        <div class="header-section">Brief Work Experience (Past)</div>
+
+        <!-- current Org -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label>Past Organization</label>
+              </td>
+              <td style="width: 60%;">
+                <input type="text" class="form-control" id="pastOrg" aria-describedby="name" name="pastOrg"
+                  [(ngModel)]="pastOrg">
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- current designation -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label>Past Designation</label>
+              </td>
+              <td style="width: 60%;">
+                <select [(ngModel)]="pastQualification" name="pastQualification" (change)="onPastDesigationChange($event.target.value)" class="form-control">
+                  <option value="default" selected hidden>Select</option>
+                  <option *ngFor="let designation of designations" value="{{designation}}">{{designation}}</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- exp from year -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label>From year to year</label>
+              </td>
+              <td style="width: 30%;">
+                <select [(ngModel)]="pastExpFromYear" name="pastExpFromYear" (change)="onPastExpFromYearChange($event.target.value)" class="form-control">
+                  <option value="default" selected hidden>Select</option>
+                  <option *ngFor="let year of fromPastYears" value="{{year}}">{{year}}</option>
+                </select>
+              </td>
+              <td style="width: 30%;">
+                <select [(ngModel)]="pastExpToYear" name="pastExpToYear" (change)="onPastExpToYearChange($event.target.value)" class="form-control">
+                  <option value="default" selected hidden>Select</option>
+                  <option *ngFor="let year of toPastYears" value="{{year}}">{{year}}</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- currentJobProfile -->
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label>Job Profile</label>
+              </td>
+              <td style="width: 60%;">
+                <textarea class="form-control" id="pastJobProfile" aria-describedby="pastJobProfile"
+                  name="pastJobProfile" [(ngModel)]="pastJobProfile"></textarea>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="form-group">
+          <table style="width: 100%;">
+            <tr>
+              <td style="width: 40%; float: right; text-align: end; padding-right: 10px;">
+                <label>Upload Resume</label>
+              </td>
+              <td style="width: 60%;">
+                <input type="file" class="form-control" id="resume" aria-describedby="resume" name="resume"
+                  (change)="uploadResume($event.target.files)" [(ngModel)]="resume" accept="application/pdf,application/msword,
+                  application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+              </td>
+            </tr>
+          </table>
+        </div>
+
+
+
+
+      </div>
+
+
+      <button type="submit" style="margin: 3px" class="btn btn-primary" (click)="nextClick()">Previous</button>
+      <button type="submit" style="margin: 3px" class="btn btn-primary" (click)="signUp()">Regiter</button>
+    </div>
+    <!-- <div>
+      <br>
+      <span style="float: left; font-weight: 100; font-size: 13px;" (click)="goToScreen('/forgot-password')">Forgot
+        Password ?</span>
+      <span style="float: right; font-weight: 100;font-size: 13px;" (click)="goToScreen('/login')">Have an
+        account?</span>
+    </div> -->
+  </form>
+</div>

@@ -1,0 +1,38 @@
+<div class="card custom-css">
+  <form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Username</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Enter email" name="Email" [(ngModel)]="emailId">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" name="Password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+        [(ngModel)]="password">
+      <!-- <span toggle="#input-pwd" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
+    </div>
+    <!-- <div class="form-group" class="pwd" style="position: relative;">
+      <label for="exampleInputPassword1">Password</label>
+      <input class="form-control" type="text" placeholder="Password *" />
+      <span class="p-viewer" style="z-index: 9999;
+      position: absolute;
+      top: 28%;
+      right: 10px;">
+        <i class="fa fa-eye" aria-hidden="true"></i>
+      </span>
+    </div> -->
+    <br>
+    <div style="text-align: center;">
+      <button type="submit" class="btn btn-primary" (click)="signIn()">Login</button>
+    </div>
+    <div>
+      <br>
+      <span style="float: left; font-weight: 100; font-size: 13px;" (click)="goToScreen('/register')">Don't have
+        account?</span>
+      <span style="float: right; font-weight: 100;font-size: 13px;" (click)="goToScreen('/forgot-password')">Forgot
+        Password?</span>
+    </div>
+  </form>
+
+</div>

@@ -1,0 +1,11 @@
+<div style="text-align: center;">
+  <button class="btn btn-primary" style="font-size: 12px;" (click)="goToScreen('0')">Visit eCommerce Platform</button>
+  <button style="margin-left: 10px; font-size: 12px;" class="btn btn-primary" (click)="goToScreen('1')">Visit Food Platform</button>
+</div>
+<br>
+
+<div style="height: 200px;">
+  <slideshow [height]="'50px'" [minHeight]="'450px'" [autoPlay]="true" [showArrows]="true" [imageUrls]="imageUrls"
+    [lazyLoad]="imageSources?.length > 1" [autoPlayWaitForLazyLoad]="true" [fullscreen]="false" [showDots]="true">
+  </slideshow>
+</div>

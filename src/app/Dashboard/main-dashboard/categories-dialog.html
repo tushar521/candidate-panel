@@ -1,0 +1,83 @@
+<style type="text/css">
+  .makeItCenter2 {
+    overflow-x: hidden;
+    padding-bottom: 10px;
+    display: grid;
+    text-align: center;
+    height: -webkit-fill-available;
+    justify-content: center;
+  }
+
+  .mat-dialog-content {
+    display: grid;
+    margin: 0 -24px;
+    padding: 0 24px;
+    max-height: 65vh;
+    overflow: visible;
+    /* -webkit-overflow-scrolling: touch; */
+  }
+
+  .mat-raised-button.mat-success,
+  .mat-flat-button.mat-success,
+  .mat-fab.mat-success,
+  .mat-mini-fab.mat-success {
+    color: #f0fff3;
+    background-color: #1976d2;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .close.mat-button {
+    position: relative;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    line-height: 14px;
+    min-width: auto;
+  }
+
+</style>
+
+<div>
+  <!-- <button class="close" mat-button (click)="onNoClick()">X</button> -->
+  <button mat-button class="close" [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-form-field style="width: -webkit-fill-available;">
+    <mat-label>Parent Category</mat-label>
+    <mat-select (selectionChange)="selectParentCat($event.value)">
+      <mat-option *ngFor="let category of listOfCategories" [value]="category">
+        {{category.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+  <mat-form-field style="width: -webkit-fill-available;">
+    <mat-label>Sub Category</mat-label>
+    <mat-select (selectionChange)="selectChildCat($event.value)">
+      <mat-option class="not-empty-select" *ngFor="let category of listOfChildCategories" [value]="category">
+        {{category.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div mat-dialog-actions style="display: block; text-align: center; margin-top: 5px;">
+    <button style="margin: 3px;" class=btn-center mat-raised-button color="success" (click)="addItemToSearch()">Add
+      Search</button>
+    &nbsp;
+    <button style="margin: 3px;" class=btn-center mat-raised-button color="success" cdkFocusInitial
+      [mat-dialog-close]="selectedSearchItems">Search
+      Filter</button>
+  </div>
+  <br>
+  <div>
+    <a *ngFor="let item of selectedSearchItems"
+      style="word-break: break-all; position: relative; float: left; margin-top: 20px;">
+      <span style="border: 1px solid black; padding: 10px;"> {{ item.name }} &nbsp; <i class="fa fa-trash"
+          (click)="deleteItemsFromFilter(item.category_id)"></i>
+      </span> &nbsp;
+    </a>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<ngx-loading [show]="utilsService.enableLoading" [config]="{ fullScreenBackdrop:true }"></ngx-loading>
+<toaster-container [toasterconfig]="config"></toaster-container>
+
+
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+  <div style="color: white; text-align: center;">CANDIDATE</div>>
+</nav>
+<br><br>
+
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

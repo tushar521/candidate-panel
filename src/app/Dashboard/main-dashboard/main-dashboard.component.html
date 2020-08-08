@@ -1,0 +1,51 @@
+<!-- <div>
+  <form class="example searchItem">
+    <input type="text" placeholder="Search.." name="search" [(ngModel)]="searchText">
+    <button type="submit" (click)="searchProducts()"><i class="fa fa-search"></i></button>
+
+    <button type="submit" (click)="showCategoriesDialog()"><i class="fa fa-filter"></i></button>
+    <div *ngIf="searchedFor !== ''">
+      <span style="font-size: 12px;" class="nano-text"> You searched for: </span><span style="text-decoration: solid;"> {{ searchedFor }} </span>
+      <a class="nano-text" style="font-size: 12px; color: #007bff;" (click)="clearFilters()">Clear Filters </a>
+    </div>
+  </form>
+  &nbsp;
+</div>
+
+<div *ngIf="!noProducts">
+  <div *ngFor="let elem of allProducts; let i = index">
+    <div class="column">
+      <mat-card class="card" (click)="showProductDetails(elem)">
+        <h3 *ngIf="elem.starred === 0">{{elem.name}} <span (click)="addToFav(elem, '1', i);$event.stopPropagation();"
+            style="float: right;" class="material-icons">favorite_border</span></h3>
+        <h3 *ngIf="elem.starred === 1">{{elem.name}} <span (click)="addToFav(elem, '2', i);$event.stopPropagation();"
+            style="float: right; color: red;" class="material-icons">favorite</span></h3>
+        <br>
+        <div style="text-align: center;
+          display: block;">
+          <img src="{{elem.picture}}" width="120px" height="120px" />
+        </div>
+        <table style="margin-top: 10px;">
+          <tr>
+            <td>Price:</td>
+            <td>{{elem.price_per_unit}} &#8377;</td>
+          </tr>
+        </table>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="noProducts" style="text-align: center;">
+  No any product found to saw you.
+  <br>
+  <a style="font-size: 12px; color: #007bff;" (click)="clearFilters()">Refresh Again</a>
+</div>
+ -->
+
+<div style="text-align: center;">
+  <h2>Welcome to this Candidte Portal</h2>
+  <br><br>
+  <button type="submit" class="btn btn-primary" (click)="logmeout()">Logout</button>
+</div>
+

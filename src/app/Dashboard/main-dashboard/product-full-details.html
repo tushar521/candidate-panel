@@ -1,0 +1,199 @@
+<style type="text/css">
+  .makeItCenter2 {
+    overflow-x: hidden;
+    padding-bottom: 10px;
+    display: grid;
+    text-align: center;
+    height: -webkit-fill-available;
+    justify-content: center;
+  }
+
+  .mat-dialog-content {
+    display: grid;
+    margin: 0 -24px;
+    padding: 0 24px;
+    max-height: 65vh;
+    overflow: visible;
+  }
+
+  .mat-raised-button.mat-success,
+  .mat-flat-button.mat-success,
+  .mat-fab.mat-success,
+  .mat-mini-fab.mat-success {
+    color: #f0fff3;
+    background-color: #1976d2;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* .product-data {
+    width: 100%;
+  } */
+
+  .div30 {
+    width: 30%;
+    float: left;
+  }
+
+  .div70 {
+    width: 70%;
+    float: left;
+  }
+
+  .productImage {
+    width: 90%;
+    height: 90%;
+    margin: 10px;
+  }
+
+  .custom-modalbox>mat-dialog-container {
+    background-color: skyblue;
+  }
+
+  .td30 {
+    width: 30%;
+  }
+
+  .td70 {
+    width: 70%;
+  }
+
+  .addToCartBtn {
+    text-align: left;
+  }
+
+  .selectQuantiy {
+    width: 100px;
+    border: 1px solid black;
+    padding: 6px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 600px) {
+    .product-data {
+      width: 100%;
+      float: left;
+    }
+
+    .div30 {
+      width: -webkit-fill-available;
+      height: 170px;
+      text-align: center;
+      /* width: 150px; */
+    }
+
+    .addToCartBtn {
+      text-align: center;
+    }
+
+    .div70 {
+      width: -webkit-fill-available;
+      margin-top: 10px;
+    }
+
+    .productImage {
+      width: 150px;
+      height: 150px;
+      margin: 10px;
+    }
+
+    .td30 {
+      width: 50%;
+    }
+
+    .td70 {
+      width: 50%;
+    }
+
+    .selectQuantiy {
+      width: 70px;
+      border: 1px solid black;
+      padding: 6px;
+      text-align: center;
+    }
+
+  }
+
+  .close.mat-button {
+    position: relative;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    line-height: 14px;
+    min-width: auto;
+  }
+
+</style>
+<button mat-button class="close" [mat-dialog-close]="true">
+  <mat-icon>close</mat-icon>
+</button>
+<div mat-dialog-content>
+
+  <div>
+    <div style="float: left;">
+      <h4> {{ productData.name }} </h4>
+    </div>
+    <div style="float: right;">
+      <h3 *ngIf="productData.starred === 0"><span style="float: right;" class="material-icons">favorite_border</span>
+      </h3>
+      <h3 *ngIf="productData.starred === 1"><span style="float: right; color: red;"
+          class="material-icons">favorite</span></h3>
+    </div>
+  </div>
+
+  <div class="product-data">
+    <div class="div30">
+      <img class="productImage" [src]="productData.picture" />
+    </div>
+    <br>
+
+    <div class="div70">
+      <table style="width: 100%;">
+        <tr>
+          <td class="td30">Price:</td>
+          <td class="td70">{{ productData.price_per_unit }} {{ productData.currency }}</td>
+        </tr>
+        <tr>
+          <td class="td30">
+            Available Stocks:
+          </td>
+          <td class="td70">{{ productData.available_stock }}</td>
+        </tr>
+        <tr>
+          <td class="td30">Quantity</td>
+          <td class="td70">
+            <!-- <input style="width: 60px; text-align: center;" type="number" id="quantity" name="quantity" min="1" [max]="productData.available_stock" value="1"> -->
+            <mat-select class="selectQuantiy" [(value)]="selectedQuantity">
+              <mat-option *ngFor="let item of avilableStocks" [value]="item">
+                {{ item }}
+              </mat-option>
+            </mat-select>
+          </td>
+        </tr>
+        <br>
+
+      </table>
+      <div class="addToCartBtn">
+        <button style="font-size: 13px;" type="button" (click)="addToCart(productData)" class="btn btn-dark">ADD TO
+          CART</button>
+      </div>
+      <br>
+      <!-- <pre style="white-space: pre-wrap;">
+        {{ productData.description }}
+      </pre> -->
+
+    </div>
+    <br>
+
+  </div>
+  <!-- <span style="font-size: 15px; text-decoration: underline; font-weight: 500;">Product Description:</span>
+  <br>
+  <p [innerHTML]="productData.description"></p> -->
+
+</div>
+
+<span style="font-size: 15px; text-decoration: underline; font-weight: 500;">Product Description:</span>
+<br><br>
+<p [innerHTML]="productData.description"></p>

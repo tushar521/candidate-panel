@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/angular2-toaster/toaster.min.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html,
+body {
+  min-height: 100%;
+  position: unset;
+  padding-bottom: 40px;
+}
+
+body {
+  //   margin: 0;
+  
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

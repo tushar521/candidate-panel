@@ -1,0 +1,78 @@
+.card {
+  background-color: white;
+  color: black;
+  min-height: 100%;
+  max-height: 100%;
+  width: 29.3%;
+  float: left;
+  margin: 2%;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.searchItem {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  // border-bottom: 1px solid black;
+  margin-left: 2%;
+  width: -webkit-fill-available;
+  margin-right: 2%;
+}
+
+.searchByCat {
+  margin-left: 2%;
+  width: -webkit-fill-available;
+  margin-right: 2%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 9%;
+  padding: 10px;
+  margin-left: 1%;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    min-height: 100%;
+    max-height: 100%;
+    width: 96%;
+    float: left;
+    margin: 2%;
+  }
+}
